@@ -7,6 +7,9 @@ import os
 db_path = ""
 out_path = ""
 
+db_tablename_actor = "actor"
+db_tablename_moves = "movie"
+
 db = None
 
 def run():
@@ -30,9 +33,25 @@ def load_config():
 def init_db():
     "DB init"
     global db
+    db = sqlite3.connect(db_path)
+    db.execute('''CREATE TABLE IF NOT EXISTS actor (
+        actor_id varchar(64) primary key,
+        actor_name text,
+        actor_photo_url text
+    )''')
+    db.execute('''CREATE TABLE IF NOT EXISTS movie (
+        movie_id varchar(64) primary key,
+        movie_name text,
+        movie_actors text,
+        movie_main_photo text,
+        movie_photos text,
+        movie_download_urls
+    ) ''')
+    db.commit()
+
 
 if __name__ == "__main__":
     print "main"
-    run()
     load_config()
+    init_db()
 
