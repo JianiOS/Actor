@@ -56,4 +56,3 @@ if __name__ == "__main__":
     print "main"
     load_config()
     init_db()
-
