@@ -9,7 +9,7 @@ out_path = ""
 
 db_tablename_actor = "actor"
 db_tablename_moves = "movie"
-
+ 
 db = None
 
 def run():
