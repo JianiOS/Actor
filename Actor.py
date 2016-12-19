@@ -6,11 +6,10 @@ import os
 
 db_path = ""
 out_path = ""
-
 db_tablename_actor = "actor"
 db_tablename_moves = "movie"
- 
 db = None
+search_actor_name = ""
 
 def run():
     "Run"
@@ -45,10 +44,13 @@ def init_db():
         movie_actors text,
         movie_main_photo text,
         movie_photos text,
-        movie_download_urls
+        movie_download_urls text
     ) ''')
     db.commit()
 
+def start_anlyze():
+    "Analyze Actor"
+    pass
 
 if __name__ == "__main__":
     print "main"
