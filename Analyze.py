@@ -14,8 +14,10 @@ f.close()
 tree = etree.HTML(content.decode("utf-8"))
 
 
-hrefs = tree.xpath(u"//div[@class='item']")
+hrefs = tree.xpath("//div[@class='item']")
 for href in hrefs:
     image = href.xpath("a//img")
     for img in image:
-        print str(img.attrib).decode("utf-8")
+        print img.get("src")
+        print img.get("title")
+
