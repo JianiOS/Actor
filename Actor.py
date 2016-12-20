@@ -4,7 +4,6 @@
 import sqlite3
 import os
 import Analyze
-import Movie
 
 SEARCH_URL = "https://www.javbus.info/search/"
 MAIN_PATH = "https://www.javbus.info"
@@ -65,7 +64,6 @@ if __name__ == "__main__":
     def callback(state, movies):
         if state == Analyze.download_state.success:
             print movies
-            pass
         else:
             pass
     Analyze.analyze_list_path(callback, path="https://www.javbus.info")

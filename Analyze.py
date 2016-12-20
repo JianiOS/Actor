@@ -8,10 +8,7 @@ from lxml import etree
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-proxies = {
-  'http' : 'socks5://127.0.0.1:1080',
-  'https': 'socks5://127.0.0.1:1080'
-}
+proxies = {'http':'socks5://127.0.0.1:1080', 'https':'socks5://127.0.0.1:1080'}
 
 class download_state(object):
     error = 1
@@ -24,11 +21,11 @@ def analyze_list_path(callback, path=""):
     if (not isinstance(path, str)) or len(path) == 0:
         callback(download_state.failed)
         return
-    
+
     response = None
     try:
         response = requests.get(path.encode("utf8"), proxies=proxies)
-    except expression as identifier:
+    except:
         callback(download_state.error)
         return
     tree = etree.HTML(response.text.encode("utf8"))
@@ -58,5 +55,4 @@ def analyze_list_path(callback, path=""):
         movies.append(a_movie)
     callback(download_state.success, movies)
     return
-   
 
