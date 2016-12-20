@@ -3,6 +3,11 @@
 
 import sqlite3
 import os
+import Analyze
+import Movie
+
+SEARCH_URL = "https://www.javbus.info/search/"
+MAIN_PATH = "https://www.javbus.info"
 
 db_path = ""
 out_path = ""
@@ -36,14 +41,14 @@ def init_db():
     db.execute('''CREATE TABLE IF NOT EXISTS actor (
         actor_id varchar(64) primary key,
         actor_name text,
-        actor_photo_url text
+        actor_thumb_url text
     )''')
     db.execute('''CREATE TABLE IF NOT EXISTS movie (
         movie_id varchar(64) primary key,
-        movie_name text,
+        movie_title text,
         movie_actors text,
-        movie_main_photo text,
-        movie_photos text,
+        movie_cover_photo text,
+        movie_thumbs text,
         movie_download_urls text
     ) ''')
     db.commit()
@@ -56,3 +61,11 @@ if __name__ == "__main__":
     print "main"
     load_config()
     init_db()
+
+    def callback(state, movies):
+        if state == Analyze.download_state.success:
+            print movies
+            pass
+        else:
+            pass
+    Analyze.analyze_list_path(callback, path="https://www.javbus.info")
