@@ -21,5 +21,6 @@ class movie(object):
         self.cover_photo = ""
         self.thumbs = []
         self.download_urls = []
+        self.download_state = 0
     def __repr__(self):
         return self.movie_id + " " + self.title + "\n"
