@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-proxies = {'http':'socks5://127.0.0.1:1080', 'https':'socks5://127.0.0.1:1080'}
 
 class download_state(object):
     "Down load State"
