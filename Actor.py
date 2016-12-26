@@ -56,14 +56,21 @@ def start_anlyze():
     "Analyze Actor"
     pass
 
+def save_movies(movies):
+    "Save Movies To Db"
+    for movie in movies:
+        db.execute('''INSERT INTO movie (movie_id, movie_title, movie_actors, movie_cover_photo, movie_thumbs, movie_download_url)
+                                    values(movie.movie_id, movie)
+        ''')
+        db.exe
+    pass
+
 if __name__ == "__main__":
     print "main"
     load_config()
     init_db()
 
     def callback(state, movies):
-        if state == Analyze.download_state.success:
-            print movies
-        else:
-            pass
+        save_movies(movies)
+
     Analyze.analyze_list_path(callback, path="https://www.javbus.info")

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
+from download_state import download_state
 
 class actor(object):
     "Class Actor"
@@ -21,6 +22,8 @@ class movie(object):
         self.cover_photo = ""
         self.thumbs = []
         self.download_urls = []
-        self.download_state = 0
+        self.state = download_state.not_begin
+        self.href = ""
     def __repr__(self):
-        return self.movie_id + " " + self.title + "\n"
+        return "{} {} {} {}\n".format(self.movie_id, self.title, self.href, self.download_urls)
+        
